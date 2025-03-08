@@ -16,33 +16,37 @@
 #
 # - This script was created with the help of ChatGPT, an OpenAI language model.
 #
+#!/bin/bash
+# This script updates, upgrades, and cleans up un-get packages,
+# then notifies the Unraid GUI if everything runs smoothly.
+
 set -e  # Stop immediately on error
 
 # Ensure un-get is installed
 if ! command -v un-get >/dev/null 2>&1; then
-    echo \"Error: un-get is not installed. Aborting.\"
+    echo "Error: un-get is not installed. Aborting."
     exit 1
 fi
 
 # Update package list
-echo \"Updating package list...\"
+echo "Updating package list..."
 un-get update
 
-# Upgrade packages (pipe 'yes' to automate prompt)
-echo \"Upgrading packages...\"
-if ! yes | un-get upgrade; then
-    echo \"Upgrade failed, attempting recovery...\"
+# Upgrade packages
+echo "Upgrading packages..."
+if ! un-get upgrade --assume-yes; then  # Remove --assume-yes if un-get doesn't support it
+    echo "Upgrade failed, attempting recovery..."
     un-get clean
     un-get update
-    yes | un-get upgrade || {
-        echo \"Automatic recovery failed. Please check manually.\"
+    un-get upgrade --assume-yes || {  # Remove --assume-yes if needed
+        echo "Automatic recovery failed. Please check manually."
         exit 1
     }
 fi
 
 # Cleanup old packages
-echo \"Cleaning up old packages...\"
+echo "Cleaning up old packages..."
 un-get cleanup
 
 # Notify success
-echo \"All un-get packages have been updated successfully!\"
+echo "All un-get packages have been updated successfully!"
