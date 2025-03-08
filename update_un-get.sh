@@ -13,10 +13,10 @@
 # - big thank you to ich777 for all their work!
 # - To install un-get on Unraid, run the following command in the terminal:
 #   curl -sL https://raw.githubusercontent.com/ich777/un-get/main/un-get-installer | bash
+# - Also, check out https://github.com/shinji257/unraid_pkgs/tree/main for more unraid packages for un-get
 #
 # - This script was created with the help of ChatGPT, an OpenAI language model.
 #
-#!/bin/bash
 # This script updates, upgrades, and cleans up un-get packages,
 # then notifies the Unraid GUI if everything runs smoothly.
 
