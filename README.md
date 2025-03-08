@@ -1,2 +1,2 @@
 # unraid_scripts
-useful unraid scripts designed to be used with the "user scripts plugin"
+A collection of Unraid scripts optimized for use with the User Scripts plugin, thoughtfully crafted with assistance from ChatGPT.
