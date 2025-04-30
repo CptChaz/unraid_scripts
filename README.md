@@ -4,7 +4,7 @@ A collection of Unraid scripts optimized for use with the User Scripts plugin, t
 
 ## Included Scripts
 
-###install_ffmpeg.sh  
+### `install_ffmpeg.sh`
 Installs the latest static build of FFmpeg x86_64 system-wide on Unraid  
 WARNING: This script installs FFmpeg at the system level and creates symlinks in /usr/bin  
 Best practice is to use Docker or VM isolation. Users assume all risk  
@@ -12,7 +12,7 @@ View Script: install_ffmpeg.sh
 
 ---
 
-###update_un-get.sh  
+### `update_un-get.sh`  
 Updates all installed un-get packages on Unraid  
 Includes automatic cleanup and optional GUI notifications  
 View Script: update_un-get.sh
