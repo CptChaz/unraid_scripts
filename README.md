@@ -8,7 +8,7 @@ A collection of Unraid scripts optimized for use with the User Scripts plugin, t
 Installs the latest static build of FFmpeg x86_64 system-wide on Unraid  
 WARNING: This script installs FFmpeg at the system level and creates symlinks in /usr/bin  
 Best practice is to use Docker or VM isolation. Users assume all risk  
-If you plan to keep FFmpeg updated regularly, consider using [`update_ffmpeg.sh`](./update_ffmpeg.sh), which performs a fresh install each time and is safe to schedule monthly.  
+If you plan to keep FFmpeg updated regularly, you can alternatively use [`update_ffmpeg.sh`](./update_ffmpeg.sh), which performs a fresh install each time and is safe to schedule monthly.  
 [View Script](./install_ffmpeg.sh)
 
 ---
