@@ -2,7 +2,7 @@
 #
 # Author: [Cpt. Chaz]
 # Created: [03/07/25]
-# Updated: [03/07/25]
+# Updated: [04/30/25] - v1.1
 # Description: A simple Unraid script for updating the un-get packages. This script will update, upgrade, and clean un-gets packages.
 # Place script in the Unraid User Scripts plugin and schedule according to user preference.
 # Status: Tested
@@ -21,7 +21,7 @@
 # This script updates, upgrades, and cleans up un-get packages,
 # then notifies the Unraid GUI if everything runs smoothly.
 
-set -e  # Stop immediately on error
+set -e  # Exit on any error
 
 # Ensure un-get is installed
 if ! command -v un-get >/dev/null 2>&1; then
@@ -33,14 +33,14 @@ fi
 echo "Updating package list..."
 un-get update
 
-# Upgrade packages
+# Attempt normal upgrade first
 echo "Upgrading packages..."
-if ! un-get upgrade --assume-yes; then  # Remove --assume-yes if un-get doesn't support it
-    echo "Upgrade failed, attempting recovery..."
+if ! un-get upgrade; then
+    echo "Upgrade failed, attempting forced recovery..."
     un-get clean
     un-get update
-    un-get upgrade --assume-yes || {  # Remove --assume-yes if needed
-        echo "Automatic recovery failed. Please check manually."
+    un-get upgrade --force || {
+        echo "Automatic recovery with --force failed. Please check manually."
         exit 1
     }
 fi
@@ -51,3 +51,4 @@ un-get cleanup
 
 # Notify success
 echo "All un-get packages have been updated successfully!"
+
