@@ -18,8 +18,7 @@
 #
 # - This script was created with the help of ChatGPT, an OpenAI language model.
 #
-# This script updates, upgrades, and cleans up un-get packages,
-# then notifies the Unraid GUI if everything runs smoothly.
+# This script updates, upgrades, and cleans up un-get packages
 
 set -e  # Exit on any error
 
